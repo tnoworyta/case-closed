@@ -1,4 +1,5 @@
 require 'simplecov'
+require 'webmock/rspec'
 SimpleCov.start 'rails'
 SimpleCov.refuse_coverage_drop
 
