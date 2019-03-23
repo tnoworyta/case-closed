@@ -11,6 +11,9 @@ class LessonForm < Patterns::Form
   validates :hour, format: { with: /\d{2}:\d{2}/ }
 
   def persist
-    resource.update(attributes.except(:date, :hour).merge(datetime: "#{date} #{hour}".to_datetime))
+    resource.update(
+      datetime: "#{date} #{hour}".to_datetime,
+      student: Student.find_by(email: student_email),
+      tutor: Tutor.find_by(email: tutor_email))
   end
 end

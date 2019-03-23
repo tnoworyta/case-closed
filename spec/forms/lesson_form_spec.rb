@@ -4,13 +4,21 @@ RSpec.describe 'LessonForm' do
   describe '#save' do
     context 'when saving lesson with valid params' do
       it 'creates new lesson' do
-        lesson_form = LessonForm.new(Lesson.new, {
+        student = create(:student, email: 'student@example.com')
+        tutor = create(:tutor, email: 'tutor@example.com')
+        lesson = Lesson.new
+        LessonForm.new(lesson, {
           student_email: 'student@example.com',
-          tutor_email: 'student@example.com',
+          tutor_email: 'tutor@example.com',
           date: '2019-05-08',
           hour: '12:00'
-        })
-        expect(lesson_form.save).to be true
+        }).save
+
+        expect(lesson.reload).to have_attributes(
+          student: student,
+          tutor: tutor,
+          datetime: Time.parse('2019-05-08 12:00 +00:00')
+        )
       end
     end
   end
