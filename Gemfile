@@ -14,6 +14,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'rails-patterns'
 gem 'rb-readline'
 gem 'httparty'
+gem 'sidekiq'
 
 group :development, :test do
   gem 'pry-rails'
