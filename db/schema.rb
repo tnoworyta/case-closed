@@ -10,31 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171031121832) do
+ActiveRecord::Schema.define(version: 20190324125029) do
 
-  create_table "cases", force: :cascade do |t|
+  create_table "customers", force: :cascade do |t|
     t.string "name"
-    t.string "case_uid"
-    t.string "officer_email"
-    t.string "officer_name"
-    t.string "description"
-    t.string "department_code"
-    t.boolean "important"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "hero_cases", force: :cascade do |t|
-    t.integer "hero_id"
-    t.integer "case_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "heros", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
 end
