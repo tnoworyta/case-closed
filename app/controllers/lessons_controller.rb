@@ -1,8 +1,8 @@
 class LessonsController < ApplicationController
   def create
-    lesson_form = LessonForm.new(Lesson.new, params[:lesson])
-    if lesson_form.save
-      head 200
+    lesson_creation = CreateLesson.call(params[:lesson])
+    if lesson_creation.errors.empty?
+      head 202
     else
       head 400
     end

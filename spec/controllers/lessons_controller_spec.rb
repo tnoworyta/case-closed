@@ -6,7 +6,7 @@ RSpec.describe 'LessonsController', type: :request do
       it 'lesson created' do
         create(:student, email: 'student@example.com')
         create(:tutor, email: 'tutor@example.com')
-        expect_any_instance_of(LessonForm).to receive(:save).and_call_original
+        expect(CreateLesson).to receive(:call).and_call_original
 
         post '/lessons', params: {
           lesson: {
@@ -17,13 +17,13 @@ RSpec.describe 'LessonsController', type: :request do
           }
         }
 
-        expect(response).to have_http_status(200)
+        expect(response).to have_http_status(202)
       end
     end
 
     context 'malformed date' do
       it 'lesson not created' do
-        expect_any_instance_of(LessonForm).to receive(:save).and_call_original
+        expect(CreateLesson).to receive(:call).and_call_original
 
         post '/lessons', params: {
           lesson: {
@@ -40,7 +40,7 @@ RSpec.describe 'LessonsController', type: :request do
 
     context 'malformed time' do
       it 'lesson not created' do
-        expect_any_instance_of(LessonForm).to receive(:save).and_call_original
+        expect(CreateLesson).to receive(:call).and_call_original
 
         post '/lessons', params: {
           lesson: {

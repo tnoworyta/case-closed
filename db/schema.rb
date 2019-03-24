@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190323145233) do
+ActiveRecord::Schema.define(version: 20190324103627) do
 
   create_table "cases", force: :cascade do |t|
     t.string "name"
@@ -51,6 +51,8 @@ ActiveRecord::Schema.define(version: 20190323145233) do
 
   create_table "tutors", force: :cascade do |t|
     t.string "email"
+    t.string "calendar_type"
+    t.string "calendar_id"
   end
 
 end
